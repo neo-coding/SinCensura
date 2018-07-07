@@ -3,17 +3,28 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { RadioPage } from '../pages/radio/radio';
+import { BonosPage } from '../pages/bonos/bonos';
+import { EventosPage } from '../pages/eventos/eventos';
+import { GaleriaPage } from '../pages/galeria/galeria';
+import { ContactoPage } from '../pages/contacto/contacto';
+import { RadioProvider } from '../providers/radio/radio';
+import { BonosProvider } from '../providers/bonos/bonos';
+import { EventosProvider } from '../providers/eventos/eventos';
+import { GaleriaProvider } from '../providers/galeria/galeria';
+import { ContactoProvider } from '../providers/contacto/contacto';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
-    ListPage
+    RadioPage,
+    BonosPage,
+    EventosPage,
+    GaleriaPage,
+    ContactoPage,
   ],
   imports: [
     BrowserModule,
@@ -22,13 +33,21 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
-    ListPage
+    RadioPage,
+    BonosPage,
+    EventosPage,
+    GaleriaPage,
+    ContactoPage,
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    RadioProvider,
+    BonosProvider,
+    EventosProvider,
+    GaleriaProvider,
+    ContactoProvider
   ]
 })
 export class AppModule {}

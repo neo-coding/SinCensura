@@ -2,9 +2,12 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
-import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+// Paginas
+import { RadioPage } from '../pages/radio/radio';
+import { GaleriaPage } from '../pages/galeria/galeria';
+import { EventosPage } from '../pages/eventos/eventos';
+import { BonosPage } from '../pages/bonos/bonos';
+import { ContactoPage } from '../pages/contacto/contacto';
 
 @Component({
   templateUrl: 'app.html'
@@ -12,17 +15,20 @@ import { ListPage } from '../pages/list/list';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = RadioPage;
 
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{title: string, component: any, icon: string}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage }
+      { title: 'Radio', component: RadioPage, icon: 'headset' },
+      { title: 'Galeria', component: GaleriaPage, icon: 'images' },
+      { title: 'Eventos', component: EventosPage, icon: 'calendar' },
+      { title: 'Bonos', component: BonosPage, icon: 'pricetags' },
+      { title: 'Contacto', component: ContactoPage, icon: 'mail' }
     ];
 
   }

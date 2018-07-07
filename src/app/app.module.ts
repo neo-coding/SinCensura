@@ -20,6 +20,7 @@ import { GaleriaProvider } from '../providers/galeria/galeria';
 import { ContactoProvider } from '../providers/contacto/contacto';
 // Plugins
 import { Media } from '@ionic-native/media';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 @NgModule({
   declarations: [
     MyApp,
@@ -52,7 +53,8 @@ import { Media } from '@ionic-native/media';
     EventosProvider,
     GaleriaProvider,
     ContactoProvider,
-    Media
+    Media,
+    InAppBrowser
   ]
 })
 export class AppModule {}

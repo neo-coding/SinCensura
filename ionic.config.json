@@ -7,8 +7,8 @@
   },
   "proxies": [
     {
-      "path": "/nowplaying",
-      "proxyUrl": "http://34.213.212.192:1993/api/nowplaying"
+      "path": "/contacto",
+      "proxyUrl": "http://localhost/api/contacto"
     }
   ]
 }

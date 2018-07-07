@@ -9,9 +9,12 @@ import { Injectable } from '@angular/core';
 */
 @Injectable()
 export class RadioProvider {
-
+  url: string = 'http://localhost:1993/api/nowplaying/1';
   constructor(public http: HttpClient) {
     console.log('Hello RadioProvider Provider');
   }
 
+  getInfo(){
+    return this.http.get(this.url);
+  }
 }

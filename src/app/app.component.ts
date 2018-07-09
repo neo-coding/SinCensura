@@ -19,7 +19,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = RadioPage;
-
+  url: string = 'http://localhost';
   pages: Array<{ title: string, component: any, icon: string }>;
 
   constructor(
@@ -67,6 +67,7 @@ export class MyApp {
         text: `Nueva oferta en ${data.bono.nombre}`,
         sound: null,
         led: 'ffffff',
+        attachments: [`${this.url}/${data.bono.imagen}`],
         vibrate: true,
         launch: false
       });

@@ -8,6 +8,9 @@ import { GaleriaPage } from '../pages/galeria/galeria';
 import { EventosPage } from '../pages/eventos/eventos';
 import { BonosPage } from '../pages/bonos/bonos';
 import { ContactoPage } from '../pages/contacto/contacto';
+// Plugins
+import { LocalNotifications } from '@ionic-native/local-notifications';
+import  Pusher  from 'pusher-js';
 
 @Component({
   templateUrl: 'app.html'
@@ -17,12 +20,16 @@ export class MyApp {
 
   rootPage: any = RadioPage;
 
-  pages: Array<{title: string, component: any, icon: string}>;
+  pages: Array<{ title: string, component: any, icon: string }>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(
+    public platform: Platform,
+    public statusBar: StatusBar,
+    public splashScreen: SplashScreen,
+    private localNotifications: LocalNotifications
+  ) {
+    this.notificaciones();
     this.initializeApp();
-
-    // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Radio', component: RadioPage, icon: 'headset' },
       { title: 'Galeria', component: GaleriaPage, icon: 'images' },
@@ -47,4 +54,24 @@ export class MyApp {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
+  notificaciones() {
+    var pusher = new Pusher('daa80d30e06777becefc', {
+      cluster: 'us2',
+      encrypted: true
+    });
+    var channel = pusher.subscribe('bonos');
+    channel.bind('new-bono', (data) => {
+      console.log(data.bono);
+      this.localNotifications.schedule({
+        id: data.bono.id,
+        text: `Nueva oferta en ${data.bono.nombre}`,
+        sound: null,
+        led: 'ffffff',
+        vibrate: true,
+        launch: false
+      });
+    });
+
+  }
+  
 }

@@ -19,12 +19,12 @@ import { RadioProvider } from '../../providers/radio/radio';
 export class RadioPage {
   myIcon: string = "play";
   status: boolean = false;
-  cancion: any = {};
-  file: MediaObject;
   musicData: any = {
     artista: "-",
     title: "-"
   };
+  cancion: any = {};
+  file: MediaObject;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,

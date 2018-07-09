@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { MyApp } from './app.component';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -21,6 +21,7 @@ import { ContactoProvider } from '../providers/contacto/contacto';
 // Plugins
 import { Media } from '@ionic-native/media';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { LocalNotifications } from '@ionic-native/local-notifications';
 @NgModule({
   declarations: [
     MyApp,
@@ -54,6 +55,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
     GaleriaProvider,
     ContactoProvider,
     Media,
+    LocalNotifications,
     InAppBrowser
   ]
 })

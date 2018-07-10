@@ -28,6 +28,11 @@ export class MyApp {
     public splashScreen: SplashScreen,
     private localNotifications: LocalNotifications
   ) {
+    let music = {
+      icon: 'play',
+      status: false
+    }
+    localStorage.setItem('music', JSON.stringify(music));
     this.notificaciones();
     this.initializeApp();
     this.pages = [

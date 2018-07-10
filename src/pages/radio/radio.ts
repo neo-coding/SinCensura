@@ -4,26 +4,19 @@ import { Media, MediaObject } from '@ionic-native/media';
 import { AlertController } from 'ionic-angular';
 import { RadioProvider } from '../../providers/radio/radio';
 
-/**
- * Generated class for the RadioPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-radio',
   templateUrl: 'radio.html',
 })
 export class RadioPage {
-  myIcon: string = "play";
+  myIcon: string = '';
   status: boolean = false;
   musicData: any = {
     artista: "-",
     title: "-"
   };
-  cancion: any = {};
+  response: any = {};
   file: MediaObject;
   constructor(
     public navCtrl: NavController,
@@ -32,23 +25,24 @@ export class RadioPage {
     public radio: RadioProvider,
     private media: Media
   ) {
+    let music = JSON.parse(localStorage.getItem('music'));
+    console.log(music);
+    this.myIcon = music.icon;
+    this.status = music.status;
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad RadioPage');
   }
   turnRadio() {
-    this.status = this.status != true;
-    
-      if(this.status){
-        this.radio.getInfo()
+    if (!this.status) {
+      this.radio.getInfo()
         .subscribe(
           (res) => {
             this.setCancion(res);
-            this.myIcon = "square";
+            this.updateLocal('square', !this.status);
           },
           (error) => {
-            this.myIcon = "play";
+            this.updateLocal('play', this.status);
             const alert = this.alertCtrl.create({
               title: 'Error!',
               subTitle: 'Hubo un error al intentar reproducir la música!',
@@ -58,17 +52,28 @@ export class RadioPage {
             alert.present();
           }
         );
-      }else{
-        this.file.stop();
-        this.myIcon = "play";
-      }
+    } else {
+      this.file.stop();
+      this.updateLocal('play', !this.status);
+    }
   }
   setCancion(data: any) {
+    console.log(data);
     this.musicData.artista = data.now_playing.song.artist;
     this.musicData.title = data.now_playing.song.title;
     this.file = this.media.create(data.station.listen_url);
     this.file.play();
     this.file.getCurrentAmplitude()
       .then(amp => console.log(amp))
+  }
+  updateLocal(icon, status) {
+    let local = {
+      icon: icon,
+      status: status
+    }
+    console.log(local);
+    localStorage.setItem('music', JSON.stringify((local)));
+    this.myIcon = icon;
+    this.status = status;
   }
 }

@@ -7,41 +7,33 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <form [formGroup]="todo" (ngSubmit)="logForm()">
-    <ion-item>
-      <ion-label color="primary" floating>Nombre</ion-label>
-      <ion-input type="text" formControlName="nombre" type="text"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label color="primary" floating>Email</ion-label>
-      <ion-input type="text" formControlName="email" type="email"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label color="primary" floating>Teléfono</ion-label>
-      <ion-input type="text" formControlName="numero" type="tel"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label color="primary" floating>Mensaje</ion-label>
-      <ion-textarea formControlName="mensaje" type="text" autocorrect="on"></ion-textarea>
-    </ion-item>
-    <button type="submit" [disabled]="!todo.valid" ion-button block class="send">Enviar</button>
-  </form>
-  <ion-grid>
-    <ion-row justify-content-center>
-      <ion-col>
-        <button ion-button clear (click)="openBrowser(enlaces.facebook)" class="social"><ion-icon name="logo-facebook"></ion-icon></button>
-      </ion-col>
-      <ion-col>
-        <button ion-button clear (click)="openBrowser(enlaces.twitter)" class="social"><ion-icon name="logo-twitter"></ion-icon></button>
-      </ion-col>
-      <ion-col>
-        <button ion-button clear (click)="openBrowser(enlaces.instagram)" class="social"><ion-icon name="logo-instagram"></ion-icon></button>
-      </ion-col>
-      <ion-col>
-        <button ion-button clear (click)="openBrowser(enlaces.web)" class="social"><ion-icon name="ios-globe"></ion-icon></button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+<ion-content class="container-contact" padding>
+  <div class="form-control">
+    <form [formGroup]="todo" (ngSubmit)="logForm()">
+      <ion-item>
+        <ion-label color="primary" floating>Nombre</ion-label>
+        <ion-input type="text" formControlName="nombre" type="text"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label color="primary" floating>Email</ion-label>
+        <ion-input type="text" formControlName="email" type="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary" floating>Teléfono</ion-label>
+        <ion-input type="text" formControlName="numero" type="tel"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary" floating>Mensaje</ion-label>
+        <ion-textarea formControlName="mensaje" type="text" autocorrect="on"></ion-textarea>
+      </ion-item>
+      <button type="submit" [disabled]="!todo.valid" ion-button block class="send">Enviar</button>
+    </form>
+  </div>
+  <div class="social-network">
+      <button ion-button clear (click)="openBrowser(enlaces.facebook)" class="social"><ion-icon name="logo-facebook"></ion-icon></button>
+      <button ion-button clear (click)="openBrowser(enlaces.twitter)" class="social"><ion-icon name="logo-twitter"></ion-icon></button>
+      <button ion-button clear (click)="openBrowser(enlaces.instagram)" class="social"><ion-icon name="logo-instagram"></ion-icon></button>
+      <button ion-button clear (click)="openBrowser(enlaces.web)" class="social"><ion-icon name="ios-globe"></ion-icon></button>
+  </div>
 </ion-content>

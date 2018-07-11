@@ -36,7 +36,6 @@ export class RadioPage {
             console.log('Suscripcion');
             this.updateLocal('square', !this.status);
             this.setCancion(res);
-            debugger
           },
           (error) => {
             this.updateLocal('play', this.status);

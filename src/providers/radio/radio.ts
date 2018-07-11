@@ -1,20 +1,20 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Media, MediaObject } from '@ionic-native/media';
 
-/*
-  Generated class for the RadioProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class RadioProvider {
   url: string = 'http://localhost:1993/api/nowplaying/1';
-  constructor(public http: HttpClient) {
-    console.log('Hello RadioProvider Provider');
+  file: MediaObject;
+  constructor(
+    public http: HttpClient,
+    private media: Media) {
   }
 
   getInfo(){
     return this.http.get(this.url);
+  }
+  createMedia(url){
+    this.file = this.media.create(url);
   }
 }

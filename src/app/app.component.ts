@@ -33,6 +33,7 @@ export class MyApp {
       status: false
     }
     localStorage.setItem('music', JSON.stringify(music));
+    
     this.notificaciones();
     this.initializeApp();
     this.pages = [
@@ -42,7 +43,6 @@ export class MyApp {
       { title: 'Bonos', component: BonosPage, icon: 'pricetags' },
       { title: 'Contacto', component: ContactoPage, icon: 'mail' }
     ];
-
   }
 
   initializeApp() {

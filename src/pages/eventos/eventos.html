@@ -15,5 +15,11 @@
 
 
 <ion-content padding>
-
+  <ion-slides loop="true" pager>
+    <ion-slide *ngFor="let slide of slides">
+      <img [src]="url+slide.imagen" class="slide-image"/>
+      <h2 class="slide-title" [innerHTML]="slide.nombre"></h2>
+      <p [innerHTML]="slide.lugar"></p>
+    </ion-slide>
+  </ion-slides>
 </ion-content>

@@ -9,9 +9,9 @@ import { Injectable } from '@angular/core';
 */
 @Injectable()
 export class EventosProvider {
-
-  constructor(public http: HttpClient) {
-    console.log('Hello EventosProvider Provider');
+  url: string = 'http://localhost/api/eventos';
+  constructor(public http: HttpClient) {}
+  getEventos(){
+    return this.http.get(this.url);
   }
-
 }

@@ -48,7 +48,6 @@ export class BonosPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad BonosPage');
   }
 
 }

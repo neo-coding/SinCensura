@@ -19,7 +19,6 @@ export class GaleriaPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad GaleriaPage');
   }
 
 }

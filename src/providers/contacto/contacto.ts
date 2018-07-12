@@ -16,6 +16,7 @@ url:any = 'http://localhost/api/contacto';
     console.log('Hello ContactoProvider Provider');
   }
   sendMessage(msg:any){
+    console.log(JSON.stringify(msg));
     return this.http.post(this.url, msg);
   }
 }

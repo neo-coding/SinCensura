@@ -39,16 +39,14 @@ export class ContactoPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ContactoPage');
   }
   logForm() {
-    console.log(this.todo.value);
     this.contacto.sendMessage(this.todo.value)
       .subscribe(data => {
-        console.log(data);
+        console.log(JSON.stringify(data));
       },
         err => {
-          console.log(err);
+          console.log(JSON.stringify(err));
         })
   }
   openBrowser(_url) {

@@ -27,8 +27,15 @@ export class BonosPage {
   ) {
     this.bonos.getBonos()
       .subscribe(data => {
-        console.log(JSON.stringify(data));
         this.slides = data;
+        if(this.slides.length === 0){
+          const alert = this.alertCtrl.create({
+            title: 'Lo sentimos :(',
+            subTitle: 'No hay bonos que mostrar!',
+            buttons: ['OK']
+          });
+          alert.present();
+        }
       },
         error => {
           const alert = this.alertCtrl.create({
@@ -36,7 +43,6 @@ export class BonosPage {
             subTitle: 'Hubo un error al cargar las imagenes!',
             buttons: ['OK']
           });
-          console.log(JSON.stringify(error));
           alert.present();
         })
   }

@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { ContactoProvider } from '../../providers/contacto/contacto';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { ToastController } from 'ionic-angular';
 /**
  * Generated class for the ContactoPage page.
  *
@@ -28,7 +29,8 @@ export class ContactoPage {
     public navParams: NavParams,
     public contacto: ContactoProvider,
     private formBuilder: FormBuilder,
-    private iap: InAppBrowser
+    private iap: InAppBrowser,
+    private toastCtrl: ToastController
   ) {
     this.todo = this.formBuilder.group({
       nombre: ['', Validators.required],
@@ -43,7 +45,19 @@ export class ContactoPage {
   logForm() {
     this.contacto.sendMessage(this.todo.value)
       .subscribe(data => {
-        console.log(JSON.stringify(data));
+        let toast = this.toastCtrl.create({
+          message: 'Mensaje enviado! Nos pondremos en contacto contigo muy pronto.',
+          duration: 3000,
+          position: 'bottom'
+        });
+        toast.onDidDismiss(() => {
+          console.log('Dismissed toast');
+        });
+        toast.present();
+        this.todo.controls['nombre'].setValue('');
+        this.todo.controls['email'].setValue('');
+        this.todo.controls['numero'].setValue('');
+        this.todo.controls['mensaje'].setValue('');
       },
         err => {
           console.log(JSON.stringify(err));

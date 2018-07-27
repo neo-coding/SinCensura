@@ -13,5 +13,7 @@ export class GaleriaProvider {
   constructor(public http: HttpClient) {
     console.log('Hello GaleriaProvider Provider');
   }
-
+  getImages(){
+    return this.http.get('http://192.168.0.3/api/galeria');
+  }
 }

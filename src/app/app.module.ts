@@ -22,6 +22,7 @@ import { ContactoProvider } from '../providers/contacto/contacto';
 import { Media } from '@ionic-native/media';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { LocalNotifications } from '@ionic-native/local-notifications';
+import { IonicImageViewerModule } from 'ionic-img-viewer';
 @NgModule({
   declarations: [
     MyApp,
@@ -34,6 +35,7 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
   imports: [
     BrowserModule,
     HttpClientModule,
+    IonicImageViewerModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],

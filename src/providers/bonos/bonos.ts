@@ -9,9 +9,8 @@ import { Injectable } from '@angular/core';
 */
 @Injectable()
 export class BonosProvider {
-  url:string='http://localhost/api/bonos';
+  url:string='http://192.168.0.3/api/bonos';
   constructor(public http: HttpClient) {
-    console.log('Hello BonosProvider Provider');
   }
   getBonos(){
     return this.http.get(this.url);

@@ -11,6 +11,7 @@ import { ContactoPage } from '../pages/contacto/contacto';
 // Plugins
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import  Pusher  from 'pusher-js';
+import { RadioProvider } from '../providers/radio/radio';
 
 @Component({
   templateUrl: 'app.html'
@@ -26,14 +27,16 @@ export class MyApp {
     public platform: Platform,
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
-    private localNotifications: LocalNotifications
+    private localNotifications: LocalNotifications,
+    private radio: RadioProvider
   ) {
     let music = {
       icon: 'play',
       status: false
     }
     localStorage.setItem('music', JSON.stringify(music));
-    
+    this.radio.audio = localStorage.getItem("audio") ? localStorage.getItem("audio") : this.setAudio();
+    this.radio.createMedia();
     this.notificaciones();
     this.initializeApp();
     this.pages = [
@@ -53,7 +56,6 @@ export class MyApp {
       this.splashScreen.hide();
     });
   }
-
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
@@ -79,5 +81,16 @@ export class MyApp {
     });
 
   }
-  
+  setAudio(){
+    let info;
+    this.radio.getInfo()
+    .subscribe(data=>{
+      info=data;
+      localStorage.setItem("audio", info.station.listen_url);
+    return info.station.listen_url;
+    },err=>{
+      console.log("Hay que mostrar un error en algún lado");
+    })
+    return "";
+  }
 }

@@ -8,12 +8,11 @@
 </ion-header>
 
 <ion-content class="container-radio" padding>
-
+  
   <div class="info-radio">
-    <h1 class="info-radio-song"> {{musicData.title}} </h1>
-    <h3 class="info-radio-author">{{musicData.artista}}</h3>
+      <marquee behavior="scroll" direction="left"><h1 class="info-radio-song">{{musicData.title}} </h1></marquee>
+      <h3 class="info-radio-author">{{musicData.artista}}</h3>
   </div>
-
   <button class="action-radio" ion-button secondary (click)="turnRadio()">
     <ion-icon [name]="myIcon"></ion-icon>
   </button>

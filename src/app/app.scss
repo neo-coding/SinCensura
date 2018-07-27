@@ -14,9 +14,18 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+.logo{
+    padding: 10px 0;
+    background: rgb(31, 31, 31);
+    border-bottom: 1px solid rgb(43, 43, 43);
+}
+ion-footer >ion-title{
+    height: 30px;
+}
 ion-list {
 
     & button.item-block {
+        text-transform: uppercase;
         background-color: transparent;
         min-height: 5.4rem;
         font-size: 1.8rem;
@@ -28,7 +37,7 @@ ion-list {
         }
     }
     & ion-icon {
-        margin-right: 8px;
+        margin: 0 15px;
     }
 
 }

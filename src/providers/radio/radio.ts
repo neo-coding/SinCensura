@@ -4,7 +4,8 @@ import { Media, MediaObject } from '@ionic-native/media';
 
 @Injectable()
 export class RadioProvider {
-  url: string = 'http://localhost:1993/api/nowplaying/1';
+  url: string = 'http://192.168.0.3:1993/api/nowplaying/1';
+  audio: string = "";
   file: MediaObject;
   constructor(
     public http: HttpClient,
@@ -14,7 +15,8 @@ export class RadioProvider {
   getInfo(){
     return this.http.get(this.url);
   }
-  createMedia(url){
-    this.file = this.media.create(url);
+  createMedia(){
+    console.log(this.audio);
+    this.file = this.media.create(this.audio);
   }
 }

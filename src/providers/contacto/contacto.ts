@@ -10,7 +10,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ContactoProvider
 {
-url:any = 'http://localhost/api/contacto';
+url:any = 'http://192.168.0.3/api/contacto';
 
   constructor(public http: HttpClient) {
     console.log('Hello ContactoProvider Provider');

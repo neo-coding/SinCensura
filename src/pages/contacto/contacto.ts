@@ -18,12 +18,22 @@ import { ToastController } from 'ionic-angular';
 })
 export class ContactoPage {
   private todo: FormGroup;
-  enlaces: {} = {
-    facebook: 'https://www.facebook.com/SorenLlamas',
-    twitter: 'https://twitter.com/wilmerllamas_',
-    instagram: 'https://www.instagram.com/wilmerllamas_/',
-    web: 'https://neocoding.com/'
-  };
+  enlaces = [{
+    icon: "logo-facebook",
+    enlace: "https://www.facebook.com/SorenLlamas"
+  },
+  {
+    icon: "logo-twitter",
+    enlace: "https://twitter.com/wilmerllamas_"
+  },
+  {
+    icon: "logo-instagram",
+    enlace: "https://www.instagram.com/wilmerllamas_/"
+  },
+  {
+    icon: "ios-globe",
+    enlace: "https://neocoding.com/"
+  }];
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,

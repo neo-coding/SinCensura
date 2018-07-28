@@ -40,7 +40,7 @@ export class MyApp {
     this.notificaciones();
     this.initializeApp();
     this.pages = [
-      { title: 'Radio', component: RadioPage, icon: 'headset' },
+      { title: 'Radio', component: RadioPage, icon: 'play' },
       { title: 'Galeria', component: GaleriaPage, icon: 'images' },
       { title: 'Eventos', component: EventosPage, icon: 'calendar' },
       { title: 'Bonos', component: BonosPage, icon: 'pricetags' },

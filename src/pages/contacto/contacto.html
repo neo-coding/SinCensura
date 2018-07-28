@@ -3,10 +3,9 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title>CONTACTO</ion-title>
   </ion-navbar>
 </ion-header>
-
 <ion-content class="container-contact" padding>
   <div class="form-control">
     <form [formGroup]="todo" (ngSubmit)="logForm()">
@@ -30,10 +29,15 @@
       <button type="submit" [disabled]="!todo.valid" ion-button block class="send">Enviar</button>
     </form>
   </div>
-  <div class="social-network">
-      <button ion-button clear (click)="openBrowser(enlaces.facebook)" class="social"><ion-icon name="logo-facebook"></ion-icon></button>
-      <button ion-button clear (click)="openBrowser(enlaces.twitter)" class="social"><ion-icon name="logo-twitter"></ion-icon></button>
-      <button ion-button clear (click)="openBrowser(enlaces.instagram)" class="social"><ion-icon name="logo-instagram"></ion-icon></button>
-      <button ion-button clear (click)="openBrowser(enlaces.web)" class="social"><ion-icon name="ios-globe"></ion-icon></button>
-  </div>
 </ion-content>
+<ion-footer>
+  <ion-toolbar>
+      <ion-grid>
+          <ion-row>
+            <ion-col *ngFor="let enlace of enlaces">
+                <button ion-button clear  (click)="openBrowser(enlace.url)" class="social"><ion-icon [name]="enlace.icon"></ion-icon></button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+  </ion-toolbar>
+</ion-footer>

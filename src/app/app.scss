@@ -38,6 +38,7 @@ ion-list {
     }
     & ion-icon {
         margin: 0 15px;
+        font-size: 1em;
     }
 
 }
@@ -50,4 +51,6 @@ ion-title {
     height: 100%;
     text-align: center;
 }
-@import "../pages/radio/radio";
+.credit{
+    font-size: 0.5em;
+}

@@ -62,7 +62,7 @@ export class RadioPage {
       this.radio.file.play();
     } else {
       this.radio.file.stop();
-      this.updateLocal('play', !this.status);
+      this.updateLocal('ios-play', !this.status);
     }
   }
   updateLocal(icon, status) {

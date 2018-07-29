@@ -6,6 +6,7 @@ import { Media, MediaObject } from '@ionic-native/media';
 export class RadioProvider {
   url: string = 'http://192.168.0.3:1993/api/nowplaying/1';
   audio: string = "";
+  isPlaying: boolean = false;
   file: MediaObject;
   constructor(
     public http: HttpClient,
@@ -16,7 +17,7 @@ export class RadioProvider {
     return this.http.get(this.url);
   }
   createMedia(){
-    console.log(this.audio);
+    console.log("Create media=>", this.audio);
     this.file = this.media.create(this.audio);
   }
 }

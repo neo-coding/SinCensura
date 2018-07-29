@@ -10,7 +10,7 @@ import { BonosPage } from '../pages/bonos/bonos';
 import { ContactoPage } from '../pages/contacto/contacto';
 // Plugins
 import { LocalNotifications } from '@ionic-native/local-notifications';
-import  Pusher  from 'pusher-js';
+import Pusher from 'pusher-js';
 import { RadioProvider } from '../providers/radio/radio';
 
 @Component({
@@ -35,8 +35,6 @@ export class MyApp {
       status: false
     }
     localStorage.setItem('music', JSON.stringify(music));
-    this.radio.audio = localStorage.getItem("audio") ? localStorage.getItem("audio") : this.setAudio();
-    this.radio.createMedia();
     this.notificaciones();
     this.initializeApp();
     this.pages = [
@@ -54,6 +52,10 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      
+      this.radio.audio = localStorage.getItem("audio") ? localStorage.getItem("audio") : this.setAudio();
+      console.log("Audio=>", this.radio.audio);
+      this.radio.createMedia();
     });
   }
   openPage(page) {
@@ -81,16 +83,16 @@ export class MyApp {
     });
 
   }
-  setAudio(){
+  setAudio() {
     let info;
     this.radio.getInfo()
-    .subscribe(data=>{
-      info=data;
-      localStorage.setItem("audio", info.station.listen_url);
-    return info.station.listen_url;
-    },err=>{
-      console.log("Hay que mostrar un error en algún lado");
-    })
+      .subscribe(data => {
+        info = data;
+        localStorage.setItem("audio", info.station.listen_url);
+        return info.station.listen_url;
+      }, err => {
+        console.log("Hay que mostrar un error en algún lado");
+      })
     return "";
   }
 }
